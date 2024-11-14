@@ -1,0 +1,1370 @@
+
+
+How To Run
+---> gedit
+---> python3 Filename.py
+
+Slip 1
+
+#Q.1 Write a Python program that demonstrates the hill 
+#climbing algorithm to find the maximum of a mathematical function 
+
+
+def hill_climbing(f, x_start, step_size=0.1, precision=0.0001):
+    x = x_start
+    while True:
+        x_next = x + step_size
+        if f(x_next) > f(x):
+            x = x_next
+        else:
+            break
+    return x, f(x)
+
+# Define the function f(x) = -x^2 + 4x
+def f(x):
+    return -x**2 + 4*x
+
+# Start hill climbing from x = 0
+x_start = 0
+x_max, f_max = hill_climbing(f, x_start)
+
+# Output the results
+print("Maximum at x:", x_max)
+print("Maximum value f(x):", f_max)
+
+
+#Output:
+#Maximum at x: 2.0
+#Maximum value f(x): 4.0
+
+
+
+
+
+#Q.2 Write a Python program to implement the Depth First Search (DFS) algorithm. Refer to the following graph as input for
+ #the program. [Initial node = 1, Goal node = 8].
+  1
+ / \
+2   3
+|\  |\
+4 5 6 7
+ \|/|/
+  8
+# Define the graph as an adjacency list
+graph = {
+    1: [2, 3],
+    2: [4, 5],
+    3: [6, 7],
+    4: [8],
+    5: [8],
+    6: [8],
+    7: [8],
+    8: []
+}
+
+# Depth First Search function
+def dfs(graph, start, goal, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    print(start, end=" ")  # Print the current node
+
+    if start == goal:
+        return True  # Goal node found
+
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            if dfs(graph, neighbor, goal, visited):
+                return True
+    return False
+
+# Initialize DFS from node 1 to find node 8
+print("DFS traversal path:")
+dfs(graph, 1, 8)
+
+#Output:
+#DFS traversal path:
+#1 2 4 8
+
+
+
+
+
+Slip 2
+
+# Q.1 Write a Python program to generate a calendar for the given month and year.
+
+import calendar
+
+# Function to display calendar
+def display_calendar(year, month):
+    print(calendar.month(year, month))
+
+# Input year and month
+year = int(input("Enter year: "))
+month = int(input("Enter month (1-12): "))
+
+# Display the calendar for the given month and year
+display_calendar(year, month)
+
+
+
+Output:
+Enter year: 2024
+Enter month (1-12): 11
+
+   November 2024
+Mo Tu We Th Fr Sa Su
+             1  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28 29 30
+
+
+
+
+# Q.2 Write a Python program to implement the Depth First Search (DFS) algorithm. Refer to the following graph as input for the program. [Initial node = 1, Goal node = 7]
+
+  1 → 3 → 5 → 7
+  ↓ ↘ ↓ ↘
+  2 → 4 → 6
+Program:
+
+# Define the graph as an adjacency list
+graph = {
+    1: [2, 3],
+    2: [4],
+    3: [4, 5],
+    4: [6],
+    5: [7],
+    6: [7],
+    7: []
+}
+
+# Depth First Search function
+def dfs(graph, start, goal, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    print(start, end=" ")  # Print the current node
+
+    if start == goal:
+        return True  # Goal node found
+
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            if dfs(graph, neighbor, goal, visited):
+                return True
+    return False
+
+# Initialize DFS from node 1 to find node 7
+print("DFS traversal path:")
+dfs(graph, 1, 7)
+
+Output:
+DFS traversal path:
+1 2 4 6 7
+
+
+
+
+
+
+Slip 3
+
+# Q.1 Write a Python program to remove punctuations from the given string.
+
+Program:
+
+# Function to remove punctuation from a string
+def remove_punctuation(input_string):
+    punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+    no_punct = ""
+    for char in input_string:
+        if char not in punctuations:
+            no_punct = no_punct + char
+    return no_punct
+
+# Input string
+input_string = input("Enter a string with punctuation: ")
+
+# Display the result after removing punctuation
+print("String without punctuation:", remove_punctuation(input_string))
+Run Command on Linux Terminal:
+
+
+Output:
+Enter a string with punctuation: Hello, world!
+String without punctuation: Hello world
+
+
+
+
+
+# Q.2 Write a Python program to implement the Depth First Search (DFS) algorithm. Refer to the following graph as input for the program. [Initial node = 2, Goal node = 7]
+
+Graph Structure:
+
+  1 -- 2 -- 6
+  |  / |    |
+  3 -- 4 -- 5 -- 7
+Program:
+
+# Define the graph as an adjacency list
+graph = {
+    1: [2, 3],
+    2: [1, 4, 5, 6],
+    3: [1, 4],
+    4: [2, 3, 5],
+    5: [2, 4, 6, 7],
+    6: [2, 5],
+    7: [5]
+}
+
+# Depth First Search function
+def dfs(graph, start, goal, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    print(start, end=" ")  # Print the current node
+
+    if start == goal:
+        return True  # Goal node found
+
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            if dfs(graph, neighbor, goal, visited):
+                return True
+    return False
+
+# Initialize DFS from node 2 to find node 7
+print("DFS traversal path:")
+dfs(graph, 2, 7)
+
+
+Output:
+DFS traversal path:
+2 1 3 4 5 7
+
+
+
+Slip 4
+# Q.1) Write a program to implement different Set Operations (any 5 operations)
+
+
+# Python program to demonstrate common set operations
+
+# Define two example sets
+setA = {1, 2, 3, 4, 5}
+setB = {4, 5, 6, 7, 8}
+
+print("Set A:", setA)
+print("Set B:", setB)
+
+# 1. Union of sets
+union_set = setA | setB
+print("\n1. Union of A and B:", union_set)
+
+# 2. Intersection of sets
+intersection_set = setA & setB
+print("2. Intersection of A and B:", intersection_set)
+
+# 3. Difference of sets
+difference_set = setA - setB
+print("3. Difference of A - B:", difference_set)
+
+# 4. Symmetric difference of sets
+symmetric_diff = setA ^ setB
+print("4. Symmetric Difference of A and B:", symmetric_diff)
+
+# 5. Check if setA is a subset of setB
+is_subset = setA <= setB
+print("5. Is A a subset of B?", is_subset)
+
+# 6. Check if setB is a superset of setA
+is_superset = setB >= setA
+print("6. Is B a superset of A?", is_superset)
+
+# 7. Add an element to a set
+setA.add(9)
+print("7. Set A after adding element 9:", setA)
+
+
+Output:
+Set A: {1, 2, 3, 4, 5}
+Set B: {4, 5, 6, 7, 8}
+
+1. Union of A and B: {1, 2, 3, 4, 5, 6, 7, 8}
+2. Intersection of A and B: {4, 5}
+3. Difference of A - B: {1, 2, 3}
+4. Symmetric Difference of A and B: {1, 2, 3, 6, 7, 8}
+5. Is A a subset of B? False
+6. Is B a superset of A? False
+7. Set A after adding element 9: {1, 2, 3, 4, 5, 9}
+
+
+
+
+
+# Q.2) Write a Python program to implement Breadth First Search algorithm. Refer to the following graph as an input for the program. [Initial node=1, Goal node=8]
+
+from collections import deque
+# Define the graph as an adjacency list
+graph = {
+    1: [2, 3],
+    2: [1, 4, 5],
+    3: [1, 6, 7],
+    4: [2, 8],
+    5: [2, 8],
+    6: [3, 8],
+    7: [3, 8],
+    8: [4, 5, 6, 7]
+}
+
+# Breadth First Search function
+def bfs(graph, start, goal):
+    queue = deque([start])
+    visited = set()
+    path = []
+
+    while queue:
+        node = queue.popleft()
+        if node == goal:
+            path.append(node)
+            return path
+
+        if node not in visited:
+            visited.add(node)
+            path.append(node)
+            queue.extend(neighbor for neighbor in graph[node] if neighbor not in visited)
+    
+    return path
+
+# Run BFS from node 1 to node 8
+start_node = 1
+goal_node = 8
+path = bfs(graph, start_node, goal_node)
+print("BFS traversal path to reach goal node 8:", path)
+
+
+Output:
+BFS traversal path to reach goal node 8: [1, 2, 3, 4, 5, 6, 7, 8]
+
+
+
+
+
+
+
+Slip 5
+
+#Q.1) Write a Python program to implement List operations (any 5 operations)
+
+
+# Define a list
+my_list = [10, 20, 30, 40, 50]
+
+# Append an element to the list
+my_list.append(60)
+print("After appending 60:", my_list)
+
+# Insert an element at a specific index
+my_list.insert(2, 25)
+print("After inserting 25 at index 2:", my_list)
+
+# Remove an element from the list
+my_list.remove(40)
+print("After removing 40:", my_list)
+
+# Pop an element from the list
+popped_element = my_list.pop()
+print("After popping an element:", my_list)
+print("Popped element:", popped_element)
+
+# Reverse the list
+my_list.reverse()
+print("After reversing the list:", my_list)
+
+
+Output:
+After appending 60: [10, 20, 30, 40, 50, 60]
+After inserting 25 at index 2: [10, 20, 25, 30, 40, 50, 60]
+After removing 40: [10, 20, 25, 30, 50, 60]
+After popping an element: [10, 20, 25, 30, 50]
+Popped element: 60
+After reversing the list: [50, 30, 25, 20, 10]
+
+
+
+
+#Q.2) Write a Python program to implement Breadth First Search algorithm. Refer to the following graph as an input for the program. [Initial node=1, Goal node=8]
+
+
+from collections import deque
+
+# Define the graph as an adjacency list
+graph = {
+    1: [2, 3, 4],
+    2: [3],
+    3: [5, 6],
+    4: [6],
+    5: [7, 8],
+    6: [8],
+    7: [],
+    8: []
+}
+
+# Breadth First Search function
+def bfs(graph, start, goal):
+    queue = deque([start])
+    visited = set()
+    path = []
+
+    while queue:
+        node = queue.popleft()
+        if node == goal:
+            path.append(node)
+            return path
+
+        if node not in visited:
+            visited.add(node)
+            path.append(node)
+            queue.extend(neighbor for neighbor in graph[node] if neighbor not in visited)
+    
+    return path
+
+# Run BFS from node 1 to node 8
+start_node = 1
+goal_node = 8
+path = bfs(graph, start_node, goal_node)
+print("BFS traversal path to reach goal node 8:", path)
+
+Output:
+
+BFS traversal path to reach goal node 8: [1, 2, 3, 4, 5, 6, 8]
+
+
+
+
+
+
+Slip 6
+
+#Q.1) Write a Python program to print lowercase and uppercase alphabets of a string
+
+# Define a string
+text = "HelloWorld"
+
+# Print lowercase alphabets
+lowercase = [char for char in text if char.islower()]
+print("Lowercase letters:", lowercase)
+
+# Print uppercase alphabets
+uppercase = [char for char in text if char.isupper()]
+print("Uppercase letters:", uppercase)
+
+
+Output:
+Lowercase letters: ['e', 'l', 'l', 'o', 'o', 'r', 'l', 'd']
+Uppercase letters: ['H', 'W']
+
+
+
+
+#Q.2) Write a Python program to implement Breadth First Search algorithm. Refer to the following graph as an input for the program. [Initial node=1, Goal node=8].
+
+from collections import deque
+# Define the graph as an adjacency list
+graph = {
+    1: [2, 3, 4],
+    2: [5],
+    3: [],
+    4: [5],
+    5: [6, 7],
+    6: [],
+    7: [8],
+    8: []
+}
+
+# Breadth First Search function
+def bfs(graph, start, goal):
+    queue = deque([start])
+    visited = set()
+    path = []
+
+    while queue:
+        node = queue.popleft()
+        if node == goal:
+            path.append(node)
+            return path
+
+        if node not in visited:
+            visited.add(node)
+            path.append(node)
+            queue.extend(neighbor for neighbor in graph[node] if neighbor not in visited)
+    
+    return path
+
+# Run BFS from node 1 to node 8
+start_node = 1
+goal_node = 8
+path = bfs(graph, start_node, goal_node)
+print("BFS traversal path to reach goal node 8:", path)
+
+
+Output:
+BFS traversal path to reach goal node 8: [1, 2, 5, 6, 7, 8]
+
+
+
+
+
+
+Slip 7
+
+#Q.1 Write a Python program to accept a number and check whether it is prime or not.
+
+# Function to check if a number is prime
+def is_prime(num):
+    if num <= 1:
+        return False  # 0 and 1 are not prime
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False  # Divisible by another number, not prime
+    return True  # Prime number
+
+# Accept a number from the user
+number = int(input("Enter a number: "))
+
+# Check if the number is prime or not
+if is_prime(number):
+    print(f"{number} is a prime number.")
+else:
+    print(f"{number} is not a prime number.")
+
+#Output:
+Enter a number: 7
+7 is a prime number.
+
+
+
+
+
+
+
+# Q.2 Write a Python program to solve 4 x 4 Queen problem.
+
+
+# Python program to solve the 4x4 Queen problem using backtracking
+
+# Function to print the chessboard
+def print_board(board):
+    for row in board:
+        print(" ".join(row))
+
+# Function to check if a queen can be placed at board[row][col]
+def is_safe(board, row, col):
+    # Check this row on left side
+    for i in range(col):
+        if board[row][i] == 'Q':
+            return False
+
+    # Check upper diagonal on left side
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 'Q':
+            return False
+
+    # Check lower diagonal on left side
+    for i, j in zip(range(row, len(board), 1), range(col, -1, -1)):
+        if board[i][j] == 'Q':
+            return False
+
+    return True
+
+# Function to solve the N-Queens problem using backtracking
+def solve_queens(board, col):
+    # If all queens are placed then return true
+    if col >= len(board):
+        return True
+
+    # Consider this column and try placing the queen in all rows one by one
+    for row in range(len(board)):
+        if is_safe(board, row, col):
+            # Place queen on board[row][col]
+            board[row][col] = 'Q'
+
+            # Recur to place the rest of the queens
+            if solve_queens(board, col + 1):
+                return True
+
+            # If placing queen in board[row][col] doesn't lead to a solution, remove queen
+            board[row][col] = '.'
+
+    # If the queen cannot be placed in any row in this column, return false
+    return False
+
+# Function to initialize the board and solve the problem
+def solve_4_queens():
+    # Create a 4x4 chessboard initialized with '.'
+    board = [['.' for _ in range(4)] for _ in range(4)]
+
+    # Try to solve the 4-Queens problem
+    if not solve_queens(board, 0):
+        print("Solution does not exist")
+        return False
+
+    # If the solution is found, print the board
+    print_board(board)
+    return True
+
+# Solve the 4x4 Queen problem
+solve_4_queens()
+
+
+Output:
+. Q . .
+. . . Q
+Q . . .
+. . Q .
+
+
+
+Slip 8
+
+# Q.1 Write a Python program to accept a string. Find and print the number of uppercase alphabets and lowercase alphabets.
+
+# Function to count uppercase and lowercase letters
+def count_case(string):
+    uppercase_count = 0
+    lowercase_count = 0
+    for char in string:
+        if char.isupper():
+            uppercase_count += 1
+        elif char.islower():
+            lowercase_count += 1
+    return uppercase_count, lowercase_count
+
+# Accepting the string from the user
+input_string = input("Enter a string: ")
+
+# Calling the function to count uppercase and lowercase letters
+upper, lower = count_case(input_string)
+
+# Printing the results
+print(f"Number of uppercase letters: {upper}")
+print(f"Number of lowercase letters: {lower}")
+
+
+
+Output:
+Enter a string: Hello World
+Uppercase letters: 2
+Lowercase letters: 8
+
+
+
+
+
+
+
+# Q.2 Write a Python program to solve the N x N Queen problem.
+
+# Function to display the board
+def display_board(board):
+    for row in board:
+        print(" ".join(str(col) for col in row))
+    print()
+
+# Function to check if it's safe to place a queen
+def is_safe(board, row, col):
+    for i in range(row):
+        if board[i][col] == 1:
+            return False
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+    for i, j in zip(range(row, -1, -1), range(col, len(board))):
+        if board[i][j] == 1:
+            return False
+    return True
+
+# Recursive function to solve the N-Queens problem
+def solve_queens(board, row):
+    if row == len(board):
+        display_board(board)
+        return True
+    res = False
+    for col in range(len(board)):
+        if is_safe(board, row, col):
+            board[row][col] = 1
+            res = solve_queens(board, row + 1) or res
+            board[row][col] = 0
+    return res
+
+# Input size of the board
+N = int(input("Enter the size of the board (N): "))
+board = [[0] * N for _ in range(N)]
+
+# Solve the N x N Queen problem
+if not solve_queens(board, 0):
+    print("Solution does not exist.")
+
+
+
+
+
+
+
+
+
+Slip 14
+
+# Q.1 Write a Python program to sort the words in a sentence in alphabetical order.
+
+# Function to sort words in a sentence alphabetically (ignoring case)
+def sort_sentence(sentence):
+    # Split the sentence into words
+    words = sentence.split()
+    # Sort words alphabetically, ignoring case
+    words.sort(key=str.lower)
+    # Join sorted words into a sentence
+    sorted_sentence = " ".join(words)
+    return sorted_sentence
+
+# Accept a sentence from the user
+sentence = input("Enter a sentence: ")
+
+# Sort the words in the sentence
+sorted_sentence = sort_sentence(sentence)
+print("Sorted sentence:", sorted_sentence)
+
+
+Output:
+Enter a sentence: The quick brown fox jumps over the lazy dog
+Sorted sentence: brown dog fox jumps lazy over quick the The
+
+
+
+
+
+
+# Q.2 Write a Python program to simulate the n-Queens problem.
+
+# Function to check if a queen can be placed at board[row][col]
+def is_safe(board, row, col, n):
+    # Check this column on upper side
+    for i in range(row):
+        if board[i][col] == 1:
+            return False
+    
+    # Check upper diagonal on left side
+    for i, j in zip(range(row-1, -1, -1), range(col-1, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
+    # Check upper diagonal on right side
+    for i, j in zip(range(row-1, -1, -1), range(col+1, n)):
+        if board[i][j] == 1:
+            return False
+    
+    return True
+
+# Function to solve n-Queens problem using backtracking
+def solve_n_queens(board, row, n):
+    # If all queens are placed
+    if row >= n:
+        return True
+
+    # Try placing this queen in all columns one by one
+    for col in range(n):
+        if is_safe(board, row, col, n):
+            board[row][col] = 1  # Place queen
+            if solve_n_queens(board, row + 1, n):  # Recur to place next queen
+                return True
+            board[row][col] = 0  # Backtrack if placement does not lead to solution
+    
+    return False
+
+# Function to print the board
+def print_board(board, n):
+    for i in range(n):
+        for j in range(n):
+            print('Q' if board[i][j] == 1 else '.', end=' ')
+        print()
+
+# Main function to solve the n-Queens problem
+def n_queens(n):
+    # Initialize the chessboard with 0's
+    board = [[0 for _ in range(n)] for _ in range(n)]
+    
+    if solve_n_queens(board, 0, n):
+        print_board(board, n)
+    else:
+        print("Solution does not exist.")
+
+# Input: Number of queens
+n = int(input("Enter the number of queens: "))
+n_queens(n)
+
+
+
+Output:
+Enter the number of queens: 4
+Q . . .
+. . . Q
+. Q . .
+. . Q .
+
+
+
+Slip 15
+
+
+#Q.1 Write a Python program to print the Fibonacci series.
+
+
+# Function to print Fibonacci series up to n terms
+def fibonacci_series(n):
+    a, b = 0, 1
+    print("Fibonacci series:", end=" ")
+    for _ in range(n):
+        print(a, end=" ")
+        a, b = b, a + b
+
+# Input number of terms
+n_terms = int(input("Enter the number of terms: "))
+fibonacci_series(n_terms)
+
+
+Output:
+Enter the number of terms: 10
+Fibonacci series: 0 1 1 2 3 5 8 13 21 34
+
+
+
+
+
+
+
+#Q.2 Write a program to implement the Iterative Deepening Depth First 
+#Search (IDDFS) algorithm. [Goal Node = G]
+
+         A
+       /   \
+      B     C
+     / \   / \
+    D   E F   G
+   / \       /
+  H   I     K
+```
+
+#Program Start
+# Define the graph as an adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F', 'G'],
+    'D': ['H', 'I'],
+    'E': [],
+    'F': ['K'],
+    'G': [],
+    'H': [],
+    'I': [],
+    'K': []
+}
+
+# Depth Limited Search function
+def depth_limited_search(graph, start, goal, depth):
+    if start == goal:
+        return True
+    if depth <= 0:
+        return False
+    for neighbor in graph[start]:
+        if depth_limited_search(graph, neighbor, goal, depth - 1):
+            print(neighbor, end=" ")
+            return True
+    return False
+
+# Iterative Deepening DFS function
+def iterative_deepening_dfs(graph, start, goal, max_depth):
+    for depth in range(max_depth + 1):
+        print(f"Searching at depth {depth}:")
+        if depth_limited_search(graph, start, goal, depth):
+            print(start)
+            return True
+    return False
+
+# Initialize IDDFS from node 'A' to find node 'G' with max depth of 3
+print("IDDFS traversal path to reach goal node 'G':")
+iterative_deepening_dfs(graph, 'A', 'G', 3)
+```
+
+
+"""Output:
+
+IDDFS traversal path to reach goal node 'G':
+Searching at depth 0:
+Searching at depth 1:
+Searching at depth 2:
+Searching at depth 3:
+G C A
+
+This output shows the path traced by Iterative Deepening DFS from the start node `A` to the goal node `G`.
+"""
+
+
+
+
+
+
+Slip 17
+
+#Q.1) Python program that demonstrates the hill climbing algorithm to find the maximum of a mathematical function.**
+
+
+def hill_climbing(func, x_start, step_size=0.1, max_iter=100):
+    x = x_start
+    for _ in range(max_iter):
+        next_x = x + step_size
+        if func(next_x) > func(x):
+            x = next_x
+        else:
+            break
+    return x, func(x)
+
+def function(x):
+    return -x**2 + 4*x
+
+x_max, y_max = hill_climbing(function, x_start=0)
+print("Maximum x:", x_max)
+print("Maximum f(x):", y_max)
+```
+
+"""Output:
+
+Maximum x: 2.0
+Maximum f(x): 4.0
+"""
+
+---
+
+
+
+
+
+"""Q.2) Write a Python program to implement A* algorithm. Refer
+ the following graph as an Input for the program.
+ [Start vertex is A and Goal Vertex is G]"""
+
+from queue import PriorityQueue
+
+def a_star_algorithm(graph, heuristic, start, goal):
+    open_list = PriorityQueue()
+    open_list.put((0, start))
+    g_costs = {start: 0}
+    parents = {start: None}
+
+    while not open_list.empty():
+           current = open_list.get()
+
+        if current == goal:
+            path = []
+            while current is not None:
+                path.append(current)
+                current = parents[current]
+            return path[::-1]
+
+        for neighbor, cost in graph[current]:
+            g_cost = g_costs[current] + cost
+            if neighbor not in g_costs or g_cost < g_costs[neighbor]:
+                g_costs[neighbor] = g_cost
+                f_cost = g_cost + heuristic[neighbor]
+                open_list.put((f_cost, neighbor))
+                parents[neighbor] = current
+    return None
+
+graph = {
+    'A': [('B', 9), ('C', 4), ('D', 21)],
+    'B': [('A', 9), ('E', 11)],
+    'C': [('A', 4), ('E', 17), ('F', 12)],
+    'D': [('A', 21), ('F', 14)],
+    'E': [('B', 11), ('C', 17), ('G', 5)],
+    'F': [('C', 12), ('D', 14), ('G', 9)],
+    'G': [('E', 5), ('F', 9)]
+}
+
+heuristic = {
+    'A': 21,
+    'B': 14,
+    'C': 18,
+    'D': 18,
+    'E': 5,
+    'F': 8,
+    'G': 0
+}
+
+path = a_star_algorithm(graph, heuristic, 'A', 'G')
+print("Path from A to G:", path)
+
+
+#python3 a_star_algorithm.py
+
+"""Output:
+Path from A to G: ['A', 'C', 'F', 'G']"""
+
+
+
+
+
+Slip 21
+
+# Q.1 Write a Python program to remove punctuations from the given string.
+
+import string
+
+# Function to remove punctuations from the given string
+def remove_punctuations(input_string):
+    # Create a translation table that maps punctuation characters to None
+    translator = str.maketrans('', '', string.punctuation)
+    # Use translate to remove punctuation
+    return input_string.translate(translator)
+
+# Input string from the user
+input_string = input("Enter a string: ")
+
+# Remove punctuations and print the result
+print("String without punctuation:", remove_punctuations(input_string))
+
+
+Output:
+Enter a string: Hello, world! How's it going?
+String without punctuation: Hello world Hows it going
+
+
+
+
+
+
+
+
+# Q.2 Write a Python program to implement the Heuristic Search algorithm.
+
+# Heuristic Search Algorithm Implementation (Greedy Best-First Search)
+
+# Define a Node class to represent each state in the search
+class Node:
+    def _init_(self, name, heuristic):
+        self.name = name        # Name of the node
+        self.heuristic = heuristic  # Heuristic value (estimated cost to goal)
+        self.parent = None      # Parent node to trace the path
+        self.children = []      # List of children nodes
+
+# Function to add children nodes to a parent node
+def add_child(node, child_node):
+    node.children.append(child_node)
+    child_node.parent = node
+
+# Heuristic Search Function (Greedy Best-First Search)
+def heuristic_search(start_node, goal_node):
+    open_list = [start_node]  # List of nodes to be evaluated
+    closed_list = []          # List of nodes that have already been evaluated
+    
+    while open_list:
+        # Sort open list based on heuristic value (greedy approach)
+        open_list.sort(key=lambda x: x.heuristic)
+        current_node = open_list.pop(0)  # Select the node with the lowest heuristic value
+        
+        print(f"Visiting node: {current_node.name}, Heuristic: {current_node.heuristic}")
+        
+        # If we have reached the goal, trace back the path
+        if current_node.name == goal_node.name:
+            path = []
+            while current_node:
+                path.append(current_node.name)
+                current_node = current_node.parent
+            path.reverse()
+            return path
+        
+        closed_list.append(current_node)  # Move the node to closed list
+        
+        # Add children of the current node to the open list
+        for child in current_node.children:
+            if child not in open_list and child not in closed_list:
+                open_list.append(child)
+    
+    return None  # No path found
+
+# Example problem: Search from 'A' to 'F'
+start = Node('A', 6)
+goal = Node('F', 0)
+
+B = Node('B', 4)
+C = Node('C', 3)
+D = Node('D', 1)
+E = Node('E', 2)
+
+# Adding children to each node
+add_child(start, B)
+add_child(start, C)
+add_child(B, D)
+add_child(C, E)
+add_child(D, goal)
+add_child(E, goal)
+
+# Perform Heuristic Search
+path = heuristic_search(start, goal)
+
+# Output the path if found
+if path:
+    print("Path to goal:", " -> ".join(path))
+else:
+    print("No path found")
+
+
+Output:
+Visiting node: A, Heuristic: 6
+Visiting node: C, Heuristic: 3
+Visiting node: E, Heuristic: 2
+Visiting node: D, Heuristic: 1
+Visiting node: F, Heuristic: 0
+Path to goal: A -> C -> E -> F
+
+
+
+
+
+
+Slip 24
+
+# Q.1 Write a Python program to implement list operations (any 5).
+
+# Initialize a sample list
+sample_list = [10, 20, 30, 40, 50]
+
+# 1. Append an element to the list
+sample_list.append(60)
+print("After append: ", sample_list)
+
+# 2. Insert an element at a specific index
+sample_list.insert(2, 25)
+print("After insert: ", sample_list)
+
+# 3. Remove an element by value
+sample_list.remove(40)
+print("After remove 40: ", sample_list)
+
+# 4. Pop an element from the list
+popped_element = sample_list.pop()
+print("After pop (popped element: ", popped_element, "):", sample_list)
+
+# 5. Count the occurrence of an element
+count_20 = sample_list.count(20)
+print("Count of 20: ", count_20)
+
+# 6. Find the index of an element
+index_30 = sample_list.index(30)
+print("Index of 30: ", index_30)
+
+# 7. Reverse the list
+sample_list.reverse()
+print("After reverse: ", sample_list)
+
+
+Output:
+After append:  [10, 20, 30, 40, 50, 60]
+After insert:  [10, 20, 25, 30, 40, 50, 60]
+After remove 40:  [10, 20, 25, 30, 50, 60]
+After pop (popped element:  60 ): [10, 20, 25, 30, 50]
+Count of 20:  1
+Index of 30:  3
+After reverse:  [50, 30, 25, 20, 10]
+
+
+
+
+
+# Q.2) Write a Python program to implement heuristic search algorithm
+# Heuristic Search Algorithm Implementation (Greedy Best-First Search)
+
+# Define a Node class to represent each state in the search
+class Node:
+    def _init_(self, name, heuristic):
+        self.name = name        # Name of the node
+        self.heuristic = heuristic  # Heuristic value (estimated cost to goal)
+        self.parent = None      # Parent node to trace the path
+        self.children = []      # List of children nodes
+
+# Function to add children nodes to a parent node
+def add_child(node, child_node):
+    node.children.append(child_node)
+    child_node.parent = node
+
+# Heuristic Search Function (Greedy Best-First Search)
+def heuristic_search(start_node, goal_node):
+    open_list = [start_node]  # List of nodes to be evaluated
+    closed_list = []          # List of nodes that have already been evaluated
+    
+    while open_list:
+        # Sort open list based on heuristic value (greedy approach)
+        open_list.sort(key=lambda x: x.heuristic)
+        current_node = open_list.pop(0)  # Select the node with the lowest heuristic value
+        
+        print(f"Visiting node: {current_node.name}, Heuristic: {current_node.heuristic}")
+        
+        # If we have reached the goal, trace back the path
+        if current_node.name == goal_node.name:
+            path = []
+            while current_node:
+                path.append(current_node.name)
+                current_node = current_node.parent
+            path.reverse()
+            return path
+        
+        closed_list.append(current_node)  # Move the node to closed list
+        
+        # Add children of the current node to the open list
+        for child in current_node.children:
+            if child not in open_list and child not in closed_list:
+                open_list.append(child)
+    
+    return None  # No path found
+
+# Example problem: Search from 'A' to 'F'
+start = Node('A', 6)
+goal = Node('F', 0)
+
+B = Node('B', 4)
+C = Node('C', 3)
+D = Node('D', 1)
+E = Node('E', 2)
+
+# Adding children to each node
+add_child(start, B)
+add_child(start, C)
+add_child(B, D)
+add_child(C, E)
+add_child(D, goal)
+add_child(E, goal)
+
+# Perform Heuristic Search
+path = heuristic_search(start, goal)
+
+# Output the path if found
+if path:
+    print("Path to goal:", " -> ".join(path))
+else:
+    print("No path found")
+
+
+
+Output:
+Visiting node: A, Heuristic: 6
+Visiting node: C, Heuristic: 3
+Visiting node: E, Heuristic: 2
+Visiting node: D, Heuristic: 1
+Visiting node: F, Heuristic: 0
+Path to goal: A -> C -> E -> F
+
+
+
+
+Slip 25
+
+#Q.1 Write a program to find and display perfect numbers from a list.
+
+#Program:
+
+# Function to check if a number is perfect
+def is_perfect(number):
+    if number < 1:
+        return False
+    sum_of_divisors = sum(i for i in range(1, number) if number % i == 0)
+    return sum_of_divisors == number
+
+# List of numbers
+numbers = [6, 28, 15, 23, 496, 12, 8128]
+
+# Find and display perfect numbers from the list
+perfect_numbers = [num for num in numbers if is_perfect(num)]
+print("Perfect numbers in the list:", perfect_numbers)
+
+"""Output:
+Perfect numbers in the list: [6, 28, 496, 8128]"""
+
+
+
+
+
+
+
+
+#Q.2 Write a Python program to solve the 8-Queen puzzle problem.
+
+# Initialize an 8x8 board with 0's
+N = 8
+board = [[0 for _ in range(N)] for _ in range(N)]
+
+# Function to check if placing a queen at board[row][col] is safe
+def is_safe(board, row, col):
+    # Check the row on left side
+    for i in range(col):
+        if board[row][i] == 1:
+            return False
+
+    # Check the upper diagonal on left side
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
+    # Check the lower diagonal on left side
+    for i, j in zip(range(row, N, 1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
+    return True
+
+# Function to solve the 8-Queen puzzle using backtracking
+def solve_queen(board, col):
+    # If all queens are placed, return True
+    if col >= N:
+        return True
+
+    # Place a queen in each row one by one
+    for i in range(N):
+        if is_safe(board, i, col):
+            board[i][col] = 1
+            if solve_queen(board, col + 1):
+                return True
+            board[i][col] = 0  # Backtrack
+
+    return False
+
+# Function to print the board with queens placed
+def print_board(board):
+    for row in board:
+        print(" ".join("Q" if col == 1 else "." for col in row))
+
+# Solve the 8-Queen puzzle and display the solution
+if solve_queen(board, 0):
+    print("One possible solution to the 8-Queen puzzle:")
+    print_board(board)
+else:
+    print("No solution found.")
+
+
+
+
+"""Output:
+
+One possible solution to the 8-Queen puzzle:
+Q . . . . . . .
+. . . . Q . . .
+. . . . . . Q .
+. . . . . . . Q
+. Q . . . . . .
+. . . Q . . . .
+. . . . . Q . .
+. . Q . . . . ."""
+
+
